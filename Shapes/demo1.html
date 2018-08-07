@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .container>div {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      flex: 0 0 auto;
+      box-sizing: border-box;
+      /* background: #fb3; */
+    }
+
+    .div1 {
+      position: relative;
+      background: transparent;
+    }
+
+    .div1::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      background: blue;
+      transform: skew(-45deg);
+      z-index: -1;
+    }
+
+    .picture {
+      width: 200px;
+      transform: rotate(45deg);
+      overflow: hidden;
+      margin: 50px;
+    }
+
+    .picture>img {
+      max-width: 100%;
+      transform: rotate(-45deg) scale(1.42);
+    }
+
+
+    .img2 {
+      width: 200px;
+      height: 200px;
+      clip-path: polygon(50% 0, 100% 50%,
+      50% 100%, 0 50%);
+      transition: 1s clip-path;
+    }
+
+    .img2:hover {
+      clip-path: polygon(0 0, 100% 0,
+      100% 100%, 0 100%);
+    }
+
+    .img3 {
+      width: 200px;
+      height: 200px;
+      clip-path: circle(50%);
+      transition: 1s clip-path;
+    }
+
+    .img3:hover {
+      clip-path: circle(0);
+    }
+
+    .img4 {
+      width: 200px;
+      height: 200px;
+    }
+
+    .div2 {
+      background: #58a;
+      background: linear-gradient(-45deg, transparent 15px, #58a 0);
+    }
+
+    .div3 {
+      background: #58a;
+      background: linear-gradient(-45deg, transparent 15px, red 0), linear-gradient(45deg, transparent 15px, blue 0);
+      background-position: right, left;
+      background-size: 50% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .div4 {
+      background: linear-gradient(-45deg, transparent 15px, red 0), linear-gradient(45deg, transparent 15px, blue 0), linear-gradient(-135deg, transparent 15px, orange 0), linear-gradient(135deg, transparent 15px, yellow 0);
+      background-position: bottom right, bottom left, top right, top left;
+      background-size: 50% 50%;
+      background-repeat: no-repeat;
+    }
+
+    .div5 {
+      background: #58a;
+      background: radial-gradient(circle at top left,
+      transparent 15px, #58a 0) top left,
+      radial-gradient(circle at top right,
+      transparent 15px, #58a 0) top right,
+      radial-gradient(circle at bottom right,
+      transparent 15px, #58a 0) bottom right,
+      radial-gradient(circle at bottom left,
+      transparent 15px, #58a 0) bottom left;
+      background-size: 50% 50%;
+      background-repeat: no-repeat;
+    }
+
+    .div6 {
+      background: #58a;
+      clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px);
+    }
+
+    .div7 {
+      margin-left: 200px !important;
+      position: relative;
+      display: inline-block;
+      color: white;
+    }
+
+    .div7::before {
+      content: '';
+      /* 用伪元素来生成一个矩形 */
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background: #58a;
+      transform: perspective(16px) rotateX(5deg);
+      /* 将旋转底部固定住 */
+      transform-origin: bottom;
+    }
+
+    nav>a {
+      position: relative;
+      display: inline-block;
+      padding: .3em 1em 0;
+    }
+
+    nav>a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background: #ccc;
+      background-image: linear-gradient( hsla(0, 0%, 100%, .6),
+      hsla(0, 0%, 100%, 0));
+      border: 1px solid rgba(0, 0, 0, .4);
+      border-bottom: none;
+      border-radius: .5em .5em 0 0;
+      box-shadow: 0 .15em white inset;
+      transform: perspective(.5em) rotateX(5deg);
+      transform-origin: bottom;
+    }
+
+    .nav .content {
+      background: #ccc;
+    }
+
+    .pieWrapper {
+      margin-top: 50px;
+      display: flex;
+    }
+
+    .pieWrapper>div {
+      margin: 30px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+
+    .pie1 {
+      background: yellowgreen;
+      background-image: linear-gradient(to right, transparent 50%, #655 0);
+      animation-delay: -20s;
+    }
+
+    .pie1::before {
+      content: '';
+      display: block;
+      margin-left: 50%;
+      height: 100%;
+      border-radius: 0 100% 100% 0 / 50%;
+      background: lightblue;
+      transform-origin: left;
+      /* transform: rotate(30deg); */
+    }
+
+
+    @keyframes spin {
+      to {
+        transform: rotate(180deg);
+      }
+    }
+
+    @keyframes bg {
+      50% {
+        background: #655;
+      }
+    }
+
+    .pie1::before {
+      content: '';
+      display: block;
+      margin-left: 50%;
+      height: 100%;
+      border-radius: 0 100% 100% 0 / 50%;
+      background-color: inherit;
+      transform-origin: left;
+      animation: spin 50s linear infinite,
+      bg 100s step-end infinite;
+      animation-delay: inherit;
+      animation-play-state: paused;
+    }
+
+    .pie2 {
+      position: relative;
+      width: 100px;
+      line-height: 100px;
+      border-radius: 50%;
+      background: yellowgreen;
+      background-image: linear-gradient(to right, transparent 50%, #655 0);
+      color: transparent;
+      text-align: center;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(.5turn);
+      }
+    }
+
+    @keyframes bg {
+      50% {
+        background: #655;
+      }
+    }
+
+    .pie2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      border-radius: 0 100% 100% 0 / 50%;
+      background-color: inherit;
+      transform-origin: left;
+      animation: spin 50s linear infinite,
+      bg 100s step-end infinite;
+      animation-play-state: paused;
+      animation-delay: inherit;
+    }
+
+    .svgWrapper {
+      margin-top: 200px;
+    }
+
+    .svg1 circle {
+      fill: yellowgreen;
+      stroke: #655;
+      stroke-width: 30;
+      stroke-dasharray: 26 12;
+    }
+
+    .svg2 {
+      background: yellowgreen;
+      border-radius: 50%;
+      transform: rotate(-90deg);
+    }
+
+    @keyframes fillup {
+      to {
+        stroke-dasharray: 120 158;
+      }
+    }
+
+    .svg2 circle {
+      fill: yellowgreen;
+      stroke: #655;
+      stroke-width: 50;
+      stroke-dasharray: 20 158;
+      /* 动画效果 */
+      /* animation: fillup 5s linear infinite; */
+    }
+
+    .svg3 {
+      width: 100px;
+      height: 100px;
+      transform: rotate(-90deg);
+      background: yellowgreen;
+      border-radius: 50%;
+    }
+
+    .svg3 circle {
+      fill: yellowgreen;
+      stroke: #655;
+      stroke-width: 32;
+      stroke-dasharray: 38 100;
+      /* 可得到比率为38%的扇区 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="picture">
+    <img src="./yinhun.jpg" alt="..." />
+  </div>
+  <img class='img2' src="./yinhun.jpg" alt="..." />
+  <img class='img3' src="./yinhun.jpg" alt="..." />
+  <img class='img4' src="./yinhun.jpg" alt="..." />
+  <div class="container">
+    <div class="div1">
+      通过伪元素实现背景变动而文字不改变效果
+    </div>
+
+    <div class="div2">
+      单切角
+    </div>
+    <div class="div3">
+      双切角
+    </div>
+    <div class="div4">
+      四切角
+    </div>
+    <div class="div5">
+      弧形切角
+    </div>
+    <div class="div6">
+      clip-path实现切角
+    </div>
+
+    <div class="div7">
+      伪元素实现梯形
+    </div>
+
+
+  </div>
+  <div class='nav'>
+    <nav>
+      <a href="">标签一</a>
+      <a href="">标签二</a>
+      <a href="">标签三</a>
+    </nav>
+    <div class='content'>
+      content
+    </div>
+  </div>
+
+  <div class="pieWrapper">
+    <div class="pie1">
+      通过设置负值的animation-delay达到让动画暂停。因为伪元素上不方便操作样式， 可以在元素上设置animation-delay， 在伪元素上使用继承animation-delay：inherit来达到伪元素上应用animation-delay的效果。
+    </div>
+    <div class="pie2">25</div>
+
+  </div>
+
+  <div class="svgWrapper">
+    <svg class='svg1' width="100" height="100">
+      <circle r="30" cx="50" cy="50" />
+    </svg>
+    <svg class='svg2' width="100" height="100">
+      <circle r="25" cx="50" cy="50" />
+    </svg>
+    <div style="width: 300px;display: inline-block;">stroke-dasharray: 26 158; 设置描边的虚线宽度以及间隔，当间隔被设置为比圆的周长还长时（周长C=2πr）， 虚线宽度就可以被用来当做角度而不用担心重复问题。将svg的背景色设置和circle一样，并设置圆角border-radius：50%；
+      并且将stroke-width设置成圆半径的一倍，最后将背景旋转90度，让饼图从top处开始旋转即可。
+
+    </div>
+
+    <svg class='svg3' viewBox="0 0 32 32">
+      <circle r="16" cx="16" cy="16" />
+    </svg>
+    <div style="width: 300px;display: inline-block;">
+      可以给这个圆形指定一个特定的半径， 从而让 它的周长无限接近 100， 这样就可以直接把比率的百分比值指定为 strokedasharray 的长度， 因为周长是 2πr， 半径就是 2 100 . 15.915 494 309 π ≈ 15.915
+      494 309 ， 我们最终把这个值取整为 16。 我们还可以在 SVG 的 viewBox 属性中指定其尺寸， 而不再使用 width 和 height 属性， 这样就可 以让它自动适应容器的大小了。
+    </div>
+  </div>
+</body>
+<script>
+  Array.prototype.slice.call(document.getElementsByClassName('pie2')).forEach(function (pie) {
+    console.log(pie, 1);
+    var p = parseFloat(pie.textContent);
+    pie.style.animationDelay = '-' + p + 's';
+  });
+</script>
+
+</html>
