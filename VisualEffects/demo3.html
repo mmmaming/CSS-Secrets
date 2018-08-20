@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+
+    }
+
+    .container div {
+      margin: 100px;
+      height: 100px;
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .div1 {
+      height: 200px!important;
+      width: 200px!important;
+      font-size: 12px;
+      background: linear-gradient(45deg, grey 50%, transparent 0) no-repeat 100% 0 / 29px 29px, 
+      linear-gradient(-135deg, transparent 20px, #58A 0);
+    }
+    .div2 {
+position: relative;
+background: #58a; /* 回退样式 */
+background:
+linear-gradient(-150deg,
+transparent 1.5em, #58a 0);
+border-radius: .5em;
+}
+.div2::before {
+content: '';
+position: absolute;
+top: 0; right: 0;
+background: linear-gradient(to left bottom,
+transparent 50%, rgba(0,0,0,.2) 0, rgba(0,0,0,.4))
+100% 0 no-repeat;
+width: 1.73em;
+height: 3em;
+transform: translateY(-1.3em) rotate(-30deg);
+transform-origin: bottom right;
+border-bottom-left-radius: inherit;
+box-shadow: -.2em .2em .3em -.1em rgba(0,0,0,.15);
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="div1">
+        先实现一个右上方的切角，再实现一个左下方的灰色小切角，并用position定位到右上方，设置宽高和no-repeat.注意
+        由于第二层渐变的20px是渐变轴的长度，所以第一层渐变的渐变轴长度应该是矩形的对角线长度。20px * 根号2，即20*1.414 约等于29px。（或者调整第二层渐变的渐变轴长度。20px/ 1.414）
+      (内边距要大于折角的尺寸。)
+      </div>
+      <div class="div2">
+
+      </div>
+  </div>
+</body>
+
+</html>
