@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .dl1 dd,
+    dt {
+      margin: 0;
+      font-weight: bold;
+      display: inline;
+    }
+
+    .dl1 dd+dt::before {
+      content: "\A";
+      white-space: pre;
+    }
+
+    .dl1 dd+dd::before {
+      content: ', ';
+      font-weight: normal;
+    }
+
+    .table1 tr:nth-child(even) {
+      background: red;
+    }
+
+    .pre1 {
+      padding: .5em;
+      line-height: 1.5;
+      background: beige;
+      background-image: linear-gradient( rgba(0, 0, 0, .2) 50%, transparent 0);
+      background-size: auto 3em;
+      /* background-position: 100% .5em; */
+      background-origin: content-box;
+    }
+  </style>
+</head>
+
+<body>
+  <dl class='dl1'>
+    <div>有一个 Unicode 字符是专门代表换行符的： 0x000A ①。 在 CSS 中， 这个字符可以写作 "\000A"， 或简化为 "\A"。 我们可以用它来作为 ::after 伪元素的内容;使用white-space: pre;来保留换行符。</div>
+    <dt>姓名</dt>
+    <dd>张无忌</dd>
+    <dt>性别</dt>
+    <dd>男</dd>
+    <dt>技能</dt>
+    <dd>乾坤大挪移 </dd>
+    <dd> 九阳神功</dd>
+  </dl>
+
+  <table class='table1'>
+    <tr>
+      <td>111</td>
+    </tr>
+    <tr>
+      <td>222</td>
+    </tr>
+    <tr>
+      <td>333</td>
+    </tr>
+    <tr>
+      <td>444</td>
+    </tr>
+  </table>
+
+  <pre class="pre1">
+      whilte(true) {
+          var d = new Date();
+        if (d.getDate() === 1) {
+          alert(123);
+        }
+      }
+  </pre>
+  <code>
+    var a = 4;
+    console.log(a);
+  </code>
+  <script>
+
+  </script>
+</body>
+
+</html>
