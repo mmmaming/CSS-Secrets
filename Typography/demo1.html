@@ -37,6 +37,54 @@
       /* background-position: 100% .5em; */
       background-origin: content-box;
     }
+
+    .div1 {
+      background: hsl(210, 13%, 60%);
+      color: hsl(210, 13%, 30%);
+      text-shadow: 0 1px 1px hsla(0, 0%, 100%, .8);
+    }
+
+    .div2 {
+      background: hsl(210, 13%, 40%);
+      color: hsl(210, 13%, 75%);
+      text-shadow: 0 -1px 1px black;
+    }
+
+    .div3 {
+      transform: scale(0.5);
+      font-size: 80px;
+      background: deeppink;
+      color: white;
+      text-shadow: 1px 1px black, -1px -1px black,
+      1px -1px black, -1px 1px black;
+    }
+
+    .div4 {
+      transform: scale(0.5);
+      font-size: 80px;
+      background: deeppink;
+      color: white;
+      transition: 1s;
+
+    }
+
+    .div4:hover {
+      color: transparent;
+      text-shadow: 0 0 13px #fff, 0 0 130px #fff;
+    }
+
+    .div5 {
+      transform: scale(0.5);
+      font-size: 60px;
+      background: #58a;
+      color: white;
+      text-shadow: 0 1px hsl(0, 0%, 85%),
+      0 2px hsl(0, 0%, 80%),
+      0 3px hsl(0, 0%, 75%),
+      0 4px hsl(0, 0%, 70%),
+      0 5px hsl(0, 0%, 65%),
+      0 5px 10px black;
+    }
   </style>
 </head>
 
@@ -79,6 +127,25 @@
     var a = 4;
     console.log(a);
   </code>
+
+  <div class='div1'>
+    当我们在浅色背景上使用深色文字时（ 比如眼前的这个例子）， 在底部 加上浅色投影通常效果最佳。
+  </div>
+  <div class="div2">
+    当我们在深色背景上使用浅色文字时， 给文 字顶部加深色投影是最佳方案，
+
+  </div>
+  <div class="div3">
+    空心字
+  </div>
+  <div class="div4">
+    鼠标移入后，字体渐渐变模糊
+  </div>
+  <div class="div5">
+    文字凸起 效果。 这其中的主要思路就是使用一长串累加的投影， 不设模糊并以 1px 的跨度逐渐错开， 使颜色逐渐变暗， 然后在底部加一层强 烈模糊的暗投影， 从而模拟完整的立体效果
+  </div>
+
+
   <script>
 
   </script>
