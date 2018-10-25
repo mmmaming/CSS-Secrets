@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .div1-wrapper {
+      background: url(./11.png);
+      width: 530px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .div1 {
+      width: 200px;
+      height: 300px;
+      border: 3px solid red;
+      background: url(./22.png) 0% 0% / cover no-repeat;
+      resize: horizontal;
+      overflow: auto;
+      width: 83px;
+    }
+
+    .image-slider1 {
+      position: relative;
+      width: 540px;
+    }
+
+    .image-slider1>div {
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      resize: horizontal;
+      overflow: hidden;
+    }
+
+    .image-slider1>div:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(-45deg, red 50%, transparent 0);
+      cursor: ew-resize;
+    }
+
+    /* 滑块版本 */
+
+    .image-slider2 {
+      position: relative;
+      display: inline-block;
+    }
+
+    .image-slider2>div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .image-slider2 img {
+      display: block;
+      user-select: none;
+    }
+
+    .image-slider2 input {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      width: 100%;
+      margin: 0;
+    }
+
+    input[type=range] {
+      position: relative;
+      -webkit-appearance: none;
+      width: 300px;
+      border-radius: 10px;
+      /*这个属性设置使填充进度条时的图形为圆角*/
+    }
+
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+
+      margin-top: -5px;
+      /*使滑块超出轨道部分的偏移量相等*/
+      /* background: red; */
+      border-radius: 50%;
+      /*外观设置为圆形*/
+      border: solid 0.125em rgba(205, 224, 230, 0.5);
+      /*设置边框*/
+      box-shadow: 0 .125em .125em #3b4547;
+      /*添加底部阴影*/
+    }
+
+    input[type=range]::-webkit-slider-thumb::after {
+      position: absolute;
+      background: blue;
+      bottom: 0;
+      height: 125px;
+      width: 25px;
+      left: 0;
+      content: '';
+      margin: 0;
+
+    }
+
+
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 15px;
+      border-radius: 10px;
+      /*将轨道设为圆角的*/
+      box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
+      /*轨道内置阴影效果*/
+    }
+
+    input[type=range]:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="div1-wrapper">
+    <div class="div1"></div>
+  </div>
+
+  <div class="image-slider1">
+    <div>
+      <img src="./11.png" alt="Before" />
+    </div>
+    <img src="./22.png" alt="After" />
+  </div>
+
+  <div class="image-slider2">
+    <div id="div2">
+      <img src="./11.png" alt="Before" />
+    </div>
+    <img src="./22.png" alt="After" />
+  </div>
+
+  <script>
+    function $$(selector, context) {
+      context = context || document;
+      var elements = context.querySelectorAll(selector);
+      return Array.prototype.slice.call(elements);
+    }
+    // var $$ = document.querySelectorAll.prototype.slice.call;
+
+    $$('.image-slider2').forEach(function (slider) {
+
+      // 创建附加的div元素，并用它包住第一个图片元素
+      // var div = document.createElement('div');
+      var div = document.getElementById('div2');
+      var img = slider.querySelector('img');
+      slider.insertBefore(img, div);
+      div.appendChild(img);
+      // 创建滑块
+      var range = document.createElement('input');
+      range.type = 'range';
+      range.oninput = function () {
+        div.style.width = this.value + '%';
+      };
+      slider.appendChild(range);
+    });
+
+  </script>
+</body>
+
+</html>
