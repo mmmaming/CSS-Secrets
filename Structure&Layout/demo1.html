@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .div1 {
+      /* 外层div的宽度等于内部最大的不可断行元素的宽度（ 即最宽的单词、 图片或具有固定宽度的盒元素）） */
+      width: min-content;
+    }
+    table {
+      table-layout: fixed;
+    }
+    ul {
+      list-style: none;
+    }
+     ul li {
+       width: 100px;
+       height: 100px;
+       background: blueviolet;
+       border-radius: 6px;
+       float: left;
+       margin: 10px 10px 0 0 ;
+     }
+     li:first-child:nth-last-child(n+4),
+li:first-child:nth-last-child(n+4) ~ li  {
+       border: 10px solid darkgoldenrod;
+     }
+     /* li:nth-child(4) ~ li {
+      border: 10px solid darkgoldenrod;
+     } */
+     .div2 {
+       width: 400px;
+       margin: 0 auto;
+       background: red;
+     }
+  </style>
+</head>
+
+<body>
+
+  <p>Some text [...]</p>
+  <figure class='div1'>
+    <img src="http://npic7.edushi.com/cn/zt/zh-chs/2018-05/22/fa6cb330967d4f12ab69319ec7c1432e.jpg" />
+    <figcaption>
+      The great Sir Adam Catlace was named after Countess Ada Lovelace, the first programmer.
+    </figcaption>
+  </figure>
+  <p>More text [...].</p>
+  <table>
+    <tr>
+      <td>
+        asdfs
+      </td>
+      <td>
+        abbbbbbbbbbbbassdf
+      </td>
+    </tr>
+    <tr>
+      <td>
+        a123123123123sdfs
+      </td>
+      <td>
+        abbdvcxsfr2312312312bbbcccccbbbassdf
+      </td>
+    </tr>
+  </table>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <div class='div2'>
+    哈哈哈
+
+  </div>
+
+</body>
+
+</html>
